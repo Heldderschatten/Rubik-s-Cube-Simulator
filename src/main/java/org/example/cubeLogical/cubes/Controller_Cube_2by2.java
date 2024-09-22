@@ -1,38 +1,102 @@
 package org.example.cubeLogical.cubes;
 
+import javafx.scene.paint.Color;
 import org.example.cubeLogical.data.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Controller_Cube_2by2 implements IlogicalCubes {
     private Graph g;
-    private int[] possibleMovesIntger = {1,2,3,4,5,6};
+    private Graph solvedGraph;
+    private int[] possibleMovesIntger = {1, 2, 3, 4, 5, 6};
+    private Node[] nodes;
     private Map<String, Integer> possibleMovesStringToInt = new HashMap<>();
+    int n = 8;
 
     public Controller_Cube_2by2() {
         System.out.println("Controller_Cube_2by2.Controller_Cube_2by2");
-        possibleMovesStringToInt.put("U",1);
-        possibleMovesStringToInt.put("D",2);
-        possibleMovesStringToInt.put("R",3);
-        possibleMovesStringToInt.put("L",4);
-        possibleMovesStringToInt.put("F",5);
-        possibleMovesStringToInt.put("B",6);
+        possibleMovesStringToInt.put("U", 1);
+        possibleMovesStringToInt.put("D", 2);
+        possibleMovesStringToInt.put("R", 3);
+        possibleMovesStringToInt.put("L", 4);
+        possibleMovesStringToInt.put("F", 5);
+        possibleMovesStringToInt.put("B", 6);
     }
 
     @Override
     public void start() {
         System.out.println("Controller_Cube_2by2.start");
-        g = new Graph(2);
 
-        Point p1 = new Point(1);
-        Point p2 = new Point(2);
-        Point p3 = new Point(3);
-        Point p4 = new Point(4);
-        Point p5 = new Point(5);
-        Point p6 = new Point(6);
-        Point p7 = new Point(7);
-        Point p8 = new Point(8);
+
+        Point p1 = new Point(1, Color.BLUE);
+        Point p2 = new Point(2, Color.RED);
+        Point p3 = new Point(3, Color.GREEN);
+        Point p4 = new Point(4, Color.PURPLE);
+        Point p5 = new Point(5, Color.BLUE);
+        Point p6 = new Point(6, Color.RED);
+        Point p7 = new Point(7, Color.GREEN);
+        Point p8 = new Point(8, Color.PURPLE);
+
+        nodes = new Node[n];
+
+        nodes[0] = new Node(p1);
+        nodes[1] = new Node(p2);
+        nodes[2] = new Node(p3);
+        nodes[3] = new Node(p4);
+        nodes[4] = new Node(p5);
+        nodes[5] = new Node(p6);
+        nodes[6] = new Node(p7);
+        nodes[7] = new Node(p8);
+
+        g = new Graph(n);
+        for (Node n : nodes) {
+            //g.addNode(n);
+            g.addNode(new Node(new Point(n.getPoint().getName(), n.getPoint().getColor())));
+        }
+
+        g.addPath(1, 0, 1);
+        g.addPath(2, 1, 1);
+        g.addPath(3, 2, 1);
+        g.addPath(0, 3, 1);
+
+        g.addPath(7, 4, 2);
+        g.addPath(4, 5, 2);
+        g.addPath(5, 6, 2);
+        g.addPath(6, 7, 2);
+
+        g.addPath(4, 0, 3);
+        g.addPath(0, 1, 3);
+        g.addPath(5, 4, 3);
+        g.addPath(1, 5, 3);
+
+        g.addPath(6, 2, 4);
+        g.addPath(2, 3, 4);
+        g.addPath(7, 6, 4);
+        g.addPath(3, 7, 4);
+
+        g.addPath(3, 0, 5);
+        g.addPath(7, 3, 5);
+        g.addPath(0, 4, 5);
+        g.addPath(4, 7, 5);
+
+        g.addPath(5, 1, 6);
+        g.addPath(1, 2, 6);
+        g.addPath(6, 5, 6);
+        g.addPath(2, 6, 6);
+
+    }
+
+    public void something() {
+        Point p1 = new Point(1, Color.BLUE);
+        Point p2 = new Point(2, Color.RED);
+        Point p3 = new Point(3, Color.GREEN);
+        Point p4 = new Point(4, Color.PURPLE);
+        Point p5 = new Point(5, Color.BLUE);
+        Point p6 = new Point(6, Color.RED);
+        Point p7 = new Point(7, Color.GREEN);
+        Point p8 = new Point(8, Color.PURPLE);
 
         Node n0 = new Node(p1);
         Node n1 = new Node(p2);
@@ -43,52 +107,22 @@ public class Controller_Cube_2by2 implements IlogicalCubes {
         Node n6 = new Node(p7);
         Node n7 = new Node(p8);
 
-        g = new Graph(8);
-        g.addNode(n0);
-        g.addNode(n1);
-        g.addNode(n2);
-        g.addNode(n3);
-        g.addNode(n4);
-        g.addNode(n5);
-        g.addNode(n6);
-        g.addNode(n7);
-
-
-        g.addPath(1,0,1);
-        g.addPath(2,1,1);
-        g.addPath(3,2,1);
-        g.addPath(0,3,1);
-
-        g.addPath(7,4,2);
-        g.addPath(4,5,2);
-        g.addPath(5,6,2);
-        g.addPath(6,7,2);
-
-        g.addPath(4,0,3);
-        g.addPath(0,1,3);
-        g.addPath(5,4,3);
-        g.addPath(1,5,3);
-
-        g.addPath(6,2,4);
-        g.addPath(2,3,4);
-        g.addPath(7,6,4);
-        g.addPath(3,7,4);
-
-        g.addPath(3,0,5);
-        g.addPath(7,3,5);
-        g.addPath(0,4,5);
-        g.addPath(4,7,5);
-
-        g.addPath(5,1,6);
-        g.addPath(1,2,6);
-        g.addPath(6,5,6);
-        g.addPath(2,6,6);
+        solvedGraph = new Graph(8);
+        solvedGraph.addNode(n0);
+        solvedGraph.addNode(n1);
+        solvedGraph.addNode(n2);
+        solvedGraph.addNode(n3);
+        solvedGraph.addNode(n4);
+        solvedGraph.addNode(n5);
+        solvedGraph.addNode(n6);
+        solvedGraph.addNode(n7);
     }
+
     @Override
     public boolean doStep(int step) {
         System.out.println("Controller_Cube_2by2.doStep");
-        for(int i : possibleMovesIntger){
-            if(i == step){
+        for (int i : possibleMovesIntger) {
+            if (i == step) {
                 g.turn(step);
                 return true;
             }
@@ -107,11 +141,24 @@ public class Controller_Cube_2by2 implements IlogicalCubes {
         System.out.println("Controller_Cube_2by2.getPoints");
         Point[] points = new Point[8];
         int counter = 0;
-        for(Node n : g.getNodes()){
+        for (Node n : g.getNodes()) {
             points[counter] = n.getPoint();
             counter++;
         }
         return points;
 
+    }
+
+    @Override
+    public boolean checkCubeSolved() {
+        System.out.println("Controller_Cube_2by2.checkCubeSolved");
+        boolean solved = true;
+        Node[] gNodes = g.getNodes();
+        for (int i = 0; i < gNodes.length; i++) {
+            if (!gNodes[i].getPoint().getName().equals(nodes[i].getPoint().getName())){
+                solved = false;
+            }
+        }
+        return solved;
     }
 }

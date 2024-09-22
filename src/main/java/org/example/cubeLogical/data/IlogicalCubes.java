@@ -5,4 +5,5 @@ public interface IlogicalCubes {
     public boolean doStep(int step);
     public boolean doStep(String step);
     public Point[] getPoints();
+    public boolean checkCubeSolved();
 }
