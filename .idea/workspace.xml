@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32281be2-5c40-42ff-961e-fbd91569a624" name="Changes" comment="Add 2by2 Logical">
+    <list default="true" id="32281be2-5c40-42ff-961e-fbd91569a624" name="Changes" comment="Add a Solved anzeige">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/cubes/Controller_Cube_2by2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/cubes/Controller_Cube_2by2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/data/IlogicalCubes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/data/IlogicalCubes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/data/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/cubeLogical/data/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/rubikscubeb6/Controller_Ui_2by2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/rubikscubeb6/Controller_Ui_2by2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/rubikscubeb6/2by2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/rubikscubeb6/2by2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/rubikscubeb6/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/rubikscubeb6/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,27 +84,20 @@
       <option name="project" value="LOCAL" />
       <updated>1726999460924</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add a Solved anzeige">
+      <option name="closed" value="true" />
+      <created>1727010631108</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727010631108</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add 2by2 Logical" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add 2by2 Logical" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/rubikscubeb6/Controller_Ui_2by2.java</url>
-          <line>273</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/cubeLogical/cubes/Controller_Cube_2by2.java</url>
-          <line>159</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Add a Solved anzeige" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add a Solved anzeige" />
   </component>
 </project>

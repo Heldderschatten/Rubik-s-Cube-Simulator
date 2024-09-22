@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
@@ -20,6 +22,7 @@ import org.example.cubeLogical.data.Point;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -114,11 +117,20 @@ public class Controller_Ui_2by2 implements Initializable {
     //Option Methodes
     public void pressed_btBack(ActionEvent event) throws IOException {
         System.out.println("Controller_Ui_2by2.pressed_btBack");
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Cube schliesen");
+        alert.setContentText("Sicher das du zurück zum Start willst?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+
     }
     public void pressed_bt_Reset(ActionEvent event){
         System.out.println("Controller_Ui_2by2.pressed_bt_Reset");
@@ -137,16 +149,34 @@ public class Controller_Ui_2by2 implements Initializable {
     public void pressed_btStartScrambel(ActionEvent event){
         System.out.println("Controller_Ui_2by2.pressed_btStartScrambel");
         Random random = new Random();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 150; i++) {
             int randomNr = random.nextInt(6);
             controller2by2.doStep(randomNr+1);
             System.out.println("random Number: " +randomNr);
             lastTruns += randomNr + "\n";
-            updateTextFields();
         }
+        updateTextFields();
     }
     public void pressed_btStartAutoSolve(ActionEvent event){
         System.out.println("Controller_Ui_2by2.pressed_btStartAutoSolve");
+        Random r = new Random();
+        int counter = 0;
+        while(!controller2by2.checkCubeSolved()&& (counter >=0)){
+            int i = r.nextInt(6);
+            controller2by2.doStep(i+1);
+            lastTruns += i+1 + delimiter;
+            counter++;
+        }
+        updateTextFields();
+        Alert solved = new Alert(Alert.AlertType.INFORMATION);
+        if(controller2by2.checkCubeSolved()){
+            solved.setTitle("Cube solved");
+            solved.setHeaderText("Solved after " + counter);
+        }else{
+            solved.setTitle("Cube not Solved");
+            solved.setHeaderText("try Agian");
+        }
+        solved.showAndWait();
 
     }
 
@@ -277,6 +307,15 @@ public class Controller_Ui_2by2 implements Initializable {
         }else{
             txt_Cubesolved.setText("Not Solved");
             txt_Cubesolved.setVisible(false);
+        }
+
+
+    }
+    private void sleep(long milis)  {
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
