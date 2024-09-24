@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>RubikscubeB6</artifactId>
+    <artifactId>Rubikscube_UI</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>RubikscubeB6</name>
 
@@ -51,6 +51,21 @@
                     <target>20</target>
                 </configuration>
             </plugin>
+            <!--Added Start -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version> 3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainclass>org.example.Luncher</mainclass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--Added End -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -60,7 +75,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.example.rubikscubeb6/org.example.rubikscubeb6.HelloApplication</mainClass>
+                            <mainClass>org.example.Luncher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
